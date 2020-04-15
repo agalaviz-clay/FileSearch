@@ -24,9 +24,20 @@ using namespace std::chrono;
 
 int main() {
   srand(time(NULL));
+  string searchTerm = RandomWordGenerator(5);
+
+  // regular expression search
+  Regular reg(searchTerm);
+  auto start3 = high_resolution_clock::now();
+  for (int i = 1; i < 2000000; i++) {{}
+    reg.StoreMatchesFound();
+    }
+  auto stop3 = high_resolution_clock::now();
+  auto duration3 = duration_cast<milliseconds>(stop3 - start3);
+  cout << "Elapsed Time for regular expression: " << duration3.count() << "ms" << endl;
+
 
   // test index below
-  string searchTerm = RandomWordGenerator(5);
   Preprocess index(searchTerm);
   auto start1 = high_resolution_clock::now();
   for (int i = 1; i < 2000000; i++) {
@@ -46,15 +57,7 @@ int main() {
   auto duration2 = duration_cast<milliseconds>(stop2 - start2);
   cout << "Elapsed Time for string match: " << duration2.count() << "ms" << endl;
 
-  // regular expression search
-  Regular reg(searchTerm);
-  auto start3 = high_resolution_clock::now();
-  for (int i = 1; i < 2000000; i++) {
-    reg.StoreMatchesFound();
-    }
-  auto stop3 = high_resolution_clock::now();
-  auto duration3 = duration_cast<milliseconds>(stop3 - start3);
-  cout << "Elapsed Time for regular expression: " << duration3.count() << "ms" << endl;
+
 
   return 0;
 }
