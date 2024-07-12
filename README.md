@@ -19,10 +19,10 @@ __How to run this program:__
 
 To run this program successfully you will need to download this program with all of its associated files.
 Once you have them downloaded save them to a directory of your choosing you will need to open the terminal
-and navigate to the directory where you saved the TargetCaseStudy folder.
-Like so: cd pathToDirectory/TargetCaseStudy/src after that you will need to type this,
+and navigate to the directory where you saved the folder.
+Like so: cd pathToDirectory/FileSearch/src after that you will need to type this,
 g++ main.cc search.cc simple.cc regular.cc preprocess.cc this will compile the code and create an executable
-called a.out At this point you will want to type  ./a.out to run the executable.
+called a.out At this point you will want to type ./a.out to run the executable.
 
 The terminal will now prompt the user to enter a search term and search method, execute the search, and
 return results. For instance:
@@ -39,7 +39,7 @@ __Test:__
 performance.cc is a provided file that runs all 3 search algorithms consecutively it will print out how long each
 algorithm takes after running each algorithm with a random search term, 2 million times.
 
-1. Navigate to the folder by typing cd pathToDirectory/TargetCaseStudy/src in the terminal
+1. Navigate to the folder by typing cd pathToDirectory/FileSearch/src in the terminal
 2. Type g++ performance.cc search.cc simple.cc regular.cc preprocess.cc to compile performance test
 3. Type ./a.out to run
 
