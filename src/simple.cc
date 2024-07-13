@@ -25,8 +25,8 @@ int Simple::FindMatches(string fileName) {
         StringToCharacterPtr(singleWord,fileWord);
         StringToCharacterPtr(phrase[searchTermPosition],phraseWord);
 
-        if ( strcmp(fileWord, phraseWord ) == 0 ) {
-            if ( searchTermPosition == phrase.size()-1 ) {
+        if (strcmp(fileWord, phraseWord ) == 0) {
+            if (searchTermPosition == phrase.size()-1) {
                 numberOfOccurences += 1;
                 searchTermPosition = 0;
             } else {

@@ -17,14 +17,17 @@ To run this program successfully, you will need to download this program with al
 Once you have them downloaded save them to a directory of your choosing you will need to open the terminal
 and navigate to the directory where you saved the folder.
 
-Like so: `cd pathToDirectory/FileSearch/src` after that you will need to type this `g++ main.cc search.cc simple.cc regular.cc preprocess.cc` which will compile the code and create an executable
-called `a.out`. At this point you will type `./a.out` to run the executable.
+1) Navigate to the `/src` directory that stores all the source code
+2) Run the command `g++ main.cc search.cc simple.cc regex.cc preprocess.cc`
+   * This use the [GNU Compiler Collection (g++)](https://gcc.gnu.org/) to compile and link the C++ source files
+   * The output will be a executable program called `a.out`
+3) Execute the executable program with `./a.out`
+4) The program runs and will prompt the user to enter a search term and search method, execute the search, and return results. 
 
-The terminal will now prompt the user to enter a search term and search method, execute the search, and
-return results. For instance:
+For example:
 ```
 Enter the search term: <user enters search term>
-Enter 1 for String Match, 2 for Regular Expression,3 for Indexed <use enters number>
+Enter 1 for String Match, 2 for Regular Expression, 3 for Indexed: <use enters number>
 Search results:
       File2.txt - X matches
       File1.txt - X matches
@@ -34,15 +37,22 @@ Elapsed time: 40 ms
 
 ### Performance Test
 
-performance.cc is a provided file that runs all 3 search algorithms consecutively it will print out how long each
-algorithm takes after running each algorithm with a random search term, 2 million times. (This is a very naive performance strategy!)
+`performance.cc` is a file that runs all 3 search algorithms consecutively and will print out how long each
+algorithm takes after running them with a random search term, 2 million times. (This is a very naive performance strategy!)
 
-1. Navigate to the folder by typing cd pathToDirectory/FileSearch/src in the terminal
-2. Type `g++ performance.cc search.cc simple.cc regular.cc preprocess.cc` to compile performance test
-3. Type `./a.out` to run
+1) Navigate to the `/src` directory that stores all the source code
+2) Run the command `g++ performance.cc search.cc simple.cc regex.cc preprocess.cc -o perf` to compile and link the performance test
+3) Execute the output executable program with `./perf.out`
 
 ### Notes
 
 I have designed this program to handle inputs that can either be a single word, a phrase separated by spaces, or
-a regular expression. My algorithm is case sensitive so this allows for the user to search for a precise word.
+a regular expression. My algorithm is case-sensitive so this allows for the user to search for a precise word.
 So the word "hello" and "Hello" would be deemed as different words.
+
+### Wishlist
+* Refactor to use programming standards and idiomatic C++
+   * *I wrote this program while in college, so there are some unconventional patterns used!*
+* Rewrite in Java (or write a Java/Python equivalent)
+* Rewrite performance to be more efficient (consider benchmarking libraries like [Google Benchmark](https://github.com/google/benchmark) or [Criterion](https://bheisler.github.io/criterion.rs/book/))
+* Create unit tests (maybe Google Test, Catch2, or doctest testing frameworks)

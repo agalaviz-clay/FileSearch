@@ -1,10 +1,10 @@
-#include "regular.h"
+#include "regex.h"
 
-Regular::Regular(string searchTerm) {
-    searchTerm_ = searchTerm;
+Regex::Regex(string searchTerm) {
+    Regex::searchTerm = searchTerm;
 }
 
-int Regular::FindMatches(string fileName) {
+int Regex::FindMatches(string fileName) {
     ifstream file;
     file.open(fileName);
     if (!file.is_open()) {
@@ -14,7 +14,7 @@ int Regular::FindMatches(string fileName) {
 
     int numberOfOccurences = 0;
     string singleWord;
-    regex searchTermReg(searchTerm_);
+    regex searchTermReg(searchTerm);
     while(file >> singleWord) {
         if (regex_match(singleWord,searchTermReg)) {
             numberOfOccurences += 1;

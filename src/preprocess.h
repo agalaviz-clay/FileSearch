@@ -12,7 +12,7 @@ class Preprocess : public Search {
         void StoreWordsInMap(string fileName);
 
     private:
-        map<string,map<string,int>> maps;
-        string searchTerm_;
+        map<string, map<string, int>> fileToProcessedWordsMap;
+        string searchTerm;
 };
 #endif

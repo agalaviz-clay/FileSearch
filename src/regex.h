@@ -1,16 +1,16 @@
-#ifndef REGULAR_H_
-#define REGULAR_H_
+#ifndef REGEX_H_
+#define REGEX_H_
 #include "search.h"
 #include <regex>
 
 using namespace std;
 
-class Regular : public Search {
+class Regex : public Search {
     public:
-        Regular(string searchTerm);
+        Regex(string searchTerm);
         int FindMatches(string fileName);
 
     private:
-        string searchTerm_;
+        string searchTerm;
 };
 #endif

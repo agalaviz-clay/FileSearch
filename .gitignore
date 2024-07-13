@@ -1,4 +1,6 @@
 *.o
+*.exe
 *.out
 *.pvt
 *.idea
+q

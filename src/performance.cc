@@ -1,6 +1,6 @@
 #include "search.h"
 #include "simple.h"
-#include "regular.h"
+#include "regex.h"
 #include "preprocess.h"
 #include <chrono>
 #include <stdio.h>
@@ -26,7 +26,7 @@ int main() {
     string searchTerm = RandomWordGenerator(5);
 
     // Regular Expression Search
-    Regular reg(searchTerm);
+    Regex reg(searchTerm);
     auto start3 = high_resolution_clock::now();
     for (int i = 1; i < 2000000; i++) {{}
 	    reg.StoreMatchesFound();

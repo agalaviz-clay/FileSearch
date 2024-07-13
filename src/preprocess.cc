@@ -1,21 +1,16 @@
 #include "preprocess.h"
 
 Preprocess::Preprocess(string searchTerm) {
-    searchTerm_ = searchTerm;
-    SplitSearchTerm(searchTerm_);
-    vector<string> fileNames;
-
-    fileNames.push_back("data/french_armed_forces.txt");
-    fileNames.push_back("data/hitchhikers.txt");
-    fileNames.push_back("data/warp_drive.txt");
+    Preprocess::searchTerm = searchTerm;
+    SplitSearchTerm(searchTerm);
 
     map<string, int> frenchMap;
     map<string, int> hitchMap;
     map<string, int> warpMap;
 
-    maps.insert(pair<string, map<string, int>>("french_armed_forces.txt", frenchMap));
-    maps.insert(pair<string, map<string, int>>("hitchhikers.txt", hitchMap));
-    maps.insert(pair<string, map<string, int>>("warp_drive.txt",warpMap));
+    fileToProcessedWordsMap.insert(pair<string, map<string, int>>("french_armed_forces.txt", frenchMap));
+    fileToProcessedWordsMap.insert(pair<string, map<string, int>>("hitchhikers.txt", hitchMap));
+    fileToProcessedWordsMap.insert(pair<string, map<string, int>>("warp_drive.txt", warpMap));
 
     for (int i = 0; i < 3; i++) {
         StoreWordsInMap(fileNames[i]);
@@ -23,24 +18,24 @@ Preprocess::Preprocess(string searchTerm) {
 }
 
 int Preprocess::FindMatches(string fileName) {
-    return (maps[fileName])[searchTerm_];
+    return (fileToProcessedWordsMap[fileName])[searchTerm];
 }
 
 void Preprocess::StoreWordsInMap(string fileName) {
-    maps[fileName].insert(pair<string, int>(searchTerm_, 0));
+    fileToProcessedWordsMap[fileName].insert(pair<string, int>(searchTerm, 0));
     ifstream file;
     file.open(fileName);
     if (!file.is_open()) {
-        cout << "error: couldn't open up the file" << endl;
+        cout << "Error: This file could not open" << endl;
     }
 
     int searchTermPosition = 0;
     string singleWord;
     while(file >> singleWord) {
-        if (maps[fileName].count(singleWord) > 0) {
-            maps[fileName][singleWord] += 1;
+        if (fileToProcessedWordsMap[fileName].count(singleWord) > 0) {
+            fileToProcessedWordsMap[fileName][singleWord] += 1;
         } else {
-            maps[fileName].insert(pair<string, int>(singleWord, 1));
+            fileToProcessedWordsMap[fileName].insert(pair<string, int>(singleWord, 1));
         }
 
         if (phrase.size() > 1) {
@@ -54,7 +49,7 @@ void Preprocess::StoreWordsInMap(string fileName) {
 
             if (strcmp(fileWord, phraseWord) == 0) {
                 if (searchTermPosition == phrase.size()-1) {
-                    maps[fileName][searchTerm_] += 1;
+                    fileToProcessedWordsMap[fileName][searchTerm] += 1;
                     searchTermPosition = 0;
                 } else {
                     searchTermPosition += 1;

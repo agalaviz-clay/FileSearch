@@ -1,6 +1,6 @@
 #include "search.h"
 #include "simple.h"
-#include "regular.h"
+#include "regex.h"
 #include "preprocess.h"
 #include <chrono>
 
@@ -10,9 +10,9 @@ using namespace std::chrono;
 int main() {
     string searchTerm;
     int searchMethod;
-    cout << "Enter the seach term:" << endl;
+    cout << "Enter the seach term: " << endl;
     getline(cin,searchTerm);
-    cout << "Enter 1 for String Match, 2 for Regular Expression, 3 for Indexed" << endl;
+    cout << "Enter 1 for String Match, 2 for Regular Expression, 3 for Indexed: " << endl;
     cin >> searchMethod;
 
     if (searchMethod == 1) {
@@ -33,22 +33,31 @@ int main() {
         cout << "Elapsed Time: " << duration.count() << "ms" << endl;
         return 0;
     } else if (searchMethod == 2) {
-        Regular reg(searchTerm);
+        Regex reg(searchTerm);
         auto start = high_resolution_clock::now();
+
         reg.StoreMatchesFound();
+
         auto stop = high_resolution_clock::now();
+
         reg.SortByRelevancy();
         reg.DisplayResults();
+
         auto duration = duration_cast<milliseconds>(stop - start);
+
         cout << "Elapsed Time: " << duration.count() << "ms" << endl;
         return 0;
     } else if (searchMethod == 3) {
         Preprocess index(searchTerm);
         auto start = high_resolution_clock::now();
+
         index.StoreMatchesFound();
+
         auto stop = high_resolution_clock::now();
+
         index.SortByRelevancy();
         index.DisplayResults();
+
         auto duration = duration_cast<milliseconds>(stop - start);
         cout << "Elapsed Time: " << duration.count() << "ms" << endl;
         return 0;

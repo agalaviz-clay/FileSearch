@@ -1,10 +1,6 @@
 #include "search.h"
 
-Search::Search() {
-    fileInfo.push_back( tuple<int,string>(0, "french_armed_forces.txt"));
-    fileInfo.push_back( tuple<int,string>(0, "hitchhikers.txt"));
-    fileInfo.push_back( tuple<int,string>(0, "warp_drive.txt"));
-}
+Search::Search() {}
 
 void Search::StringToCharacterPtr(string str, char *ptr) {
     strcpy(ptr, str.c_str());
@@ -22,13 +18,7 @@ void Search::SplitSearchTerm(string searchTerm) {
     }
 }
 
-
 void Search::StoreMatchesFound() {
-    vector<string> fileNames;
-    fileNames.push_back("french_armed_forces.txt");
-    fileNames.push_back("hitchhikers.txt");
-    fileNames.push_back("warp_drive.txt");
-
     for (int i = 0; i < 3; i++) {
         int num = FindMatches(fileNames[i]);
         get<0>(fileInfo[i]) = num;
@@ -42,7 +32,6 @@ void Search::SortByRelevancy() {
 void Search::DisplayResults() {
     cout << "Search results:" << endl;
     for (int i = fileInfo.size()-1; i >= 0; i--) {
-        cout << "    " << get<1>(fileInfo[i]) << "-" << get<0>(fileInfo[i])
-             << " matches"<< std::endl;
+        cout << "    " << get<1>(fileInfo[i]) << " - " << get<0>(fileInfo[i]) << " matches"<< std::endl;
     }
 }

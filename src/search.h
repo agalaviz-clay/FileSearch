@@ -23,6 +23,7 @@ class Search {
 
     protected:
         vector<string> phrase;
-        vector<tuple<int,string>> fileInfo;
+        vector<tuple<int,string>> fileInfo = {{0, "french_armed_forces.txt"}, {0, "hitchhikers.txt"}, {0, "warp_drive.txt"}};
+        vector<string> fileNames = {"../data/french_armed_forces.txt", "../data/hitchhikers.txt", "../data/warp_drive.txt"};
 };
 #endif
