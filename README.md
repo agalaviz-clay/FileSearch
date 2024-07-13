@@ -1,6 +1,6 @@
 # File Search
 
-__Motivation__
+### Motivation
 
 The goal of this exercise is to create a working program to search a set of text files for the given search term or phrase (single token), and return results in order of relevance.
 
@@ -11,15 +11,13 @@ There are three methods for searching the files:
 * Text search using regular expressions
 * Preprocess the content and then search the index
 
-__How to Run__
+### How to Run
 
 To run this program successfully, you will need to download this program with all of its associated files.
 Once you have them downloaded save them to a directory of your choosing you will need to open the terminal
 and navigate to the directory where you saved the folder.
 
-Like so: `cd pathToDirectory/FileSearch/src`
-
-after that you will need to type this `g++ main.cc search.cc simple.cc regular.cc preprocess.cc` which will compile the code and create an executable
+Like so: `cd pathToDirectory/FileSearch/src` after that you will need to type this `g++ main.cc search.cc simple.cc regular.cc preprocess.cc` which will compile the code and create an executable
 called `a.out`. At this point you will type `./a.out` to run the executable.
 
 The terminal will now prompt the user to enter a search term and search method, execute the search, and
@@ -34,7 +32,7 @@ Search results:
 Elapsed time: 40 ms
 ```
 
-__Performance Test__
+### Performance Test
 
 performance.cc is a provided file that runs all 3 search algorithms consecutively it will print out how long each
 algorithm takes after running each algorithm with a random search term, 2 million times. (This is a very naive performance strategy!)
@@ -43,7 +41,7 @@ algorithm takes after running each algorithm with a random search term, 2 millio
 2. Type `g++ performance.cc search.cc simple.cc regular.cc preprocess.cc` to compile performance test
 3. Type `./a.out` to run
 
-__Notes__
+### Notes
 
 I have designed this program to handle inputs that can either be a single word, a phrase separated by spaces, or
 a regular expression. My algorithm is case sensitive so this allows for the user to search for a precise word.

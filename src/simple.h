@@ -8,11 +8,8 @@
 using namespace std;
 
 class Simple : public Search {
-
-public:
-  Simple(string searchTerm);
-
-  int FindMatches(string fileName);
-
+    public:
+        Simple(string searchTerm);
+        int FindMatches(string fileName);
 };
 #endif

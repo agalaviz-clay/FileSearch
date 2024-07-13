@@ -6,14 +6,11 @@
 using namespace std;
 
 class Regular : public Search {
-  public:
-    Regular(string searchTerm);
+    public:
+        Regular(string searchTerm);
+        int FindMatches(string fileName);
 
-    // used by StoreMatchesFound to put the int found into the respective file
-    int FindMatches(string fileName);
-
-  private:
-    string searchTerm_;
-
+    private:
+        string searchTerm_;
 };
 #endif
